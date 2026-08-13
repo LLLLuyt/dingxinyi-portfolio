@@ -1878,7 +1878,7 @@ a { text-decoration: none; color: inherit; }
 
   /* ── 时间轴:轴线左置,卡片右排 ── */
   .timeline-axis { left: 36px; transform: translateX(0); }
-  .tl-item { padding: 16px 0; }
+  .tl-item { padding: 32px 0; }
   .tl-left, .tl-right { width: 100%; padding: 0 0 0 60px; margin-left: 0; }
   .tl-left .tl-dot, .tl-right .tl-dot { left: 18px; right: auto; width: 36px; height: 36px; }
   .tl-dot-inner { width: 8px; height: 8px; }
