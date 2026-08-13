@@ -1789,21 +1789,167 @@ a { text-decoration: none; color: inherit; }
 }
 
 @media (max-width: 640px) {
-  .hero { padding: 120px 24px 64px; }
-  .section { padding: 64px 24px; }
-  .stats-band { padding: 56px 24px 58px; }
-  .footer { padding: 56px 24px 100px; }
-  .section-head { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .section-sub { text-align: left; }
-  .nav-island { padding: 8px 16px; gap: 2px; }
-  .nav-link { display: none; }
-  .card-face, .flip-card { width: 44%; }
-  .stats-title { font-size: 26px; }
-  .footer-sign { font-size: 34px; left: 24px; }
-  .footer-top { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .footer-contact { align-items: flex-start; }
+  /* 锚点滚动预留顶部胶囊高度 */
+  html { scroll-padding-top: 88px; }
+  body { overscroll-behavior-x: contain; }
+
+  /* ── 导航:顶部胶囊横向滑动,栏目全部可见 ── */
+  .nav-island-wrap { top: 10px; padding: 0 12px; }
+  .nav-island {
+    width: 100%;
+    max-width: 640px;
+    justify-content: flex-start;
+    gap: 4px;
+    padding: 6px 12px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-island::-webkit-scrollbar { display: none; }
+  .nav-logo { flex-shrink: 0; margin-right: 2px; }
+  .nav-logo-text { font-size: 12px; }
+  .nav-sep { display: none; }
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 8px 12px;
+  }
+  .nav-cta {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 8px 14px;
+    margin-left: 2px;
+  }
+  a, button, .chip, .flip-card, .footer-back, .video-meta-link { touch-action: manipulation; }
+
+  /* ── Hero 压缩 ── */
+  .hero { padding: 108px 24px 56px; min-height: auto; }
+  .hero-title { font-size: 44px; letter-spacing: 1px; }
+  .hero-subtitle { font-size: 18px; }
+  .hero-desc { font-size: 14.5px; line-height: 1.75; }
+  .hero-enline { font-size: 13px; letter-spacing: 2px; }
+  .hero-actions { width: 100%; }
+  .hero-actions .btn { flex: 1; min-height: 48px; padding: 14px 12px; font-size: 14.5px; }
+  .hero-contact { font-size: 12px; line-height: 1.7; }
+  .hero-visual { height: 320px; }
+  .hero-art-frame { left: 10px; top: 24px; width: min(300px, 88%); }
+  .bubble-star { width: 52px; height: 52px; left: 0; top: 12px; }
+  .bubble-heart { width: 46px; height: 46px; right: 0; top: 6px; }
+  .bubble-ring { width: 42px; height: 42px; right: 4px; top: 208px; }
+  .bubble-solid { width: 38px; height: 38px; left: 4px; top: 156px; }
+  .hero-squiggle { display: none; }
+  .chip { padding: 8px 14px; }
+
+  /* ── 数据横幅 ── */
+  .stats-head { flex-wrap: wrap; gap: 10px; }
+  .stats-title { font-size: 24px; }
+  .stats-eng { font-size: 11px; letter-spacing: 1.5px; }
+  .stat-value { font-size: 38px; }
+
+  /* ── 数据洞察 ── */
+  .insight-head { margin-bottom: 48px; }
+  .insight::before, .insight::after { display: none; }
+  .insight-title { font-size: 32px; }
+  .insight-sub { font-size: 14.5px; }
+  .donut-wrap { width: 180px; height: 180px; }
+  .donut-num { font-size: 36px; }
+  .sm-num { font-size: 46px; }
   .showcase-main { grid-template-columns: 1fr; }
   .showcase-mini { grid-template-columns: 1fr 1fr; }
+  .mini-num { font-size: 26px; }
+  .mini-name { font-size: 12px; }
+  .insight-showcase { margin-bottom: 64px; }
+  .showcase-mini { margin-top: 48px; padding-top: 24px; gap: 20px; }
+  .insight-stories { margin-top: 64px; padding-top: 32px; gap: 32px; }
+  .story-title { font-size: 19px; }
+  .story-desc { font-size: 14px; }
+  .insight-src { margin-top: 40px; font-size: 11.5px; }
+
+  /* ── Section 通用 ── */
+  .section-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .section-sub { text-align: left; }
+  .section-title { font-size: 30px; }
+  .section-sub { font-size: 13.5px; }
+
+  /* ── 时间轴:轴线左置,卡片右排 ── */
+  .timeline-axis { left: 36px; transform: translateX(0); }
+  .tl-item { padding: 16px 0; }
+  .tl-left, .tl-right { width: 100%; padding: 0 0 0 60px; margin-left: 0; }
+  .tl-left .tl-dot, .tl-right .tl-dot { left: 18px; right: auto; width: 36px; height: 36px; }
+  .tl-dot-inner { width: 8px; height: 8px; }
+  .tl-dot-active .tl-dot-inner { width: 11px; height: 11px; }
+  .tl-card { padding: 20px; gap: 10px; }
+  .tl-wm { font-size: 56px; top: -4px; right: 8px; }
+  .tl-company { font-size: 17px; }
+  .tl-point { font-size: 14px; }
+  .tl-tag { padding: 5px 10px; }
+
+  /* ── 核心项目 ── */
+  .project-block { padding: 26px 18px; gap: 22px; margin-bottom: 22px; }
+  .project-block::before { font-size: 54px; top: -10px; right: 8px; opacity: 0.08; transform: none; transition: none; }
+  .project-block .project-cover, .project-block .project-body { opacity: 1; transform: none; transition: none; }
+  .project-block .project-table tbody tr { opacity: 1; transform: none; transition: none; }
+  .project-block .keyword-zh::after { transform: scaleX(1); }
+  .keyword-zh { font-size: 26px; }
+  .project-title { font-size: 21px; }
+  .project-date { font-size: 13px; }
+  .project-desc { font-size: 14px; padding: 16px; }
+  .project-table thead { display: none; }
+  .project-table { border: none; background: transparent; overflow: visible; }
+  .project-table tbody tr {
+    display: block;
+    background: var(--white);
+    border: 1px solid rgba(16, 35, 28, 0.08);
+    border-radius: 12px;
+    padding: 5px 16px;
+    margin-bottom: 10px;
+  }
+  .project-table tbody tr:nth-child(even) { background: var(--white); }
+  .project-table tbody tr:last-child { margin-bottom: 0; }
+  .project-table td { display: block; border: none; padding: 8px 0; }
+  .project-table td:first-child {
+    width: auto;
+    padding-bottom: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--green);
+  }
+  .project-table td:last-child { padding-top: 0; font-size: 14px; font-weight: 500; }
+  .video-meta { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+  /* ── 教育背景 ── */
+  .edu-card { padding: 24px 20px; gap: 14px; }
+  .edu-school { font-size: 21px; }
+  .campus-card { padding: 20px; }
+  .edu-badge { font-size: 11px; padding: 5px 10px; }
+
+  /* ── 技能抽卡:去错落旋转,紧凑两列 ── */
+  .skills-hint { font-size: 12px; margin-bottom: 24px; }
+  .card-row { gap: 12px; }
+  .card-face, .flip-card { width: 46%; height: 216px; }
+  .card-row .tilt, .tilt { transform: none !important; }
+  .card-face { padding: 16px 14px; gap: 10px; }
+  .card-name { font-size: 15px; }
+  .card-desc { font-size: 11.5px; line-height: 1.55; }
+
+  /* ── 页脚 ── */
+  .footer-name-big { font-size: 26px; }
+  .footer-contact { font-size: 13.5px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .footer-back { min-height: 44px; }
+  .footer-sign { font-size: 34px; left: 24px; }
+
+  /* ── 动效:缩短入场,去掉阶梯延迟 ── */
+  .reveal-up { transform: translateY(20px); transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out); }
+  .reveal-item { transform: translateY(24px); transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out); }
+  .tl-item { transform: translateY(24px); transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out); }
+  .hero .reveal-up { transition-delay: 0s !important; }
 }
 
 /* ────────────── 减少动效偏好 ────────────── */
